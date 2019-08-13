@@ -54,14 +54,14 @@ function format($frequencia, $dados) {
 ?>
 <table border="1">
   <thead>
-    	<tr><th colspan="5">Tabela de Frequência</th></tr>
-      <tr>
-          <th>Valor</th>
-          <th>Frequência</th>
-          <th>Frequência Acumulada</th>
-          <th>Frequência Relativa</th>
-          <th>Frequência Relativa Acumulada</th>
-      </tr>
+    <tr><th colspan="5">Tabela de Frequência</th></tr>
+    <tr>
+      <th>Valor</th>
+      <th>Frequência</th>
+      <th>Frequência Acumulada</th>
+      <th>Frequência Relativa</th>
+      <th>Frequência Relativa Acumulada</th>
+    </tr>
   </thead>
   <tbody>
     <?php
@@ -115,14 +115,14 @@ function format($frequencia, $dados) {
 <br><br><br>
 <table border="1">
   <thead>
-    	<tr><th colspan="5">Tabela de Frequência Intervalar</th></tr>
-      <tr>
-          <th>Faixa</th>
-          <th>Frequência</th>
-          <th>Frequência Acumulada</th>
-          <th>Frequência Relativa</th>
-          <th>Frequência Relativa Acumulada</th>
-      </tr>
+    <tr><th colspan="5">Tabela de Frequência Intervalar</th></tr>
+    <tr>
+      <th>Faixa</th>
+      <th>Frequência</th>
+      <th>Frequência Acumulada</th>
+      <th>Frequência Relativa</th>
+      <th>Frequência Relativa Acumulada</th>
+    </tr>
   </thead>
   <tbody>
   <?php
