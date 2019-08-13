@@ -46,6 +46,11 @@ function frequencia ($dados, $init, $limit, $primeiro=0) {
   }
   return $x;
 }
+
+#calcula e formata porcentagens
+function format($frequencia, $dados) {
+  return number_format(($frequencia * 100)/count($dados), 2, '.', '');
+}
 ?>
 <table border="1">
   <thead>
@@ -87,19 +92,19 @@ function frequencia ($dados, $init, $limit, $primeiro=0) {
           }
 
           // FREQUENCIA RELATIVA
-          echo '<td>' . number_format(($frequencia * 100)/count($dados), 2, '.', '') . '%</td>';
+          echo '<td>' . format($frequencia, $dados) . '%</td>';
 
           // FREQUENCIA RELATIVA ACUMULADA
           if(empty($ultimafrequencia_ac)){
-            echo '<td>' . number_format(($frequencia * 100)/count($dados), 2, '.', '') . '%</td>';
-            $ultimafrequencia_ac = number_format(($frequencia * 100)/count($dados), 2, '.', '');
+            echo '<td>' . format($frequencia, $dados) . '%</td>';
+            $ultimafrequencia_ac = format($frequencia, $dados);
           }
           else {
             if(empty($acumulado_rel)) {
-              $acumulado_rel = number_format(($frequencia * 100)/count($dados), 2, '.', '') + $ultimafrequencia_ac;
+              $acumulado_rel = format($frequencia, $dados) + $ultimafrequencia_ac;
               echo '<td>' . $acumulado_rel . '%</td>';
             } else {
-              $acumulado_rel = number_format(($frequencia * 100)/count($dados), 2, '.', '') + $acumulado_rel;
+              $acumulado_rel = format($frequencia, $dados) + $acumulado_rel;
               echo '<td>' . $acumulado_rel . '%</td>';
             }
           }
@@ -125,7 +130,6 @@ function frequencia ($dados, $init, $limit, $primeiro=0) {
     <?php
 
       // FAIXA INTERVALAR
-      $k = round(1 + 3.22 * log10(round((max($dados)-min($dados)))));
       for ($i=0; $i < $k; $i++) {
         echo '<tr>';
         if($i==0) {
@@ -177,22 +181,22 @@ function frequencia ($dados, $init, $limit, $primeiro=0) {
 
         // FREQUENCIA RELATIVA INTERVALAR
         if($i==0) {
-          echo '<td>' . number_format((frequencia($dados, $init, $limit) * 100)/count($dados), 2, '.', '') . '%</td>';
+          echo '<td>' . format(frequencia($dados, $init, $limit), $dados) . '%</td>';
         } else {
-          echo '<td>' . number_format((frequencia($dados, $int, $lmt, 1) * 100)/count($dados), 2, '.', '') . '%</td>';
+          echo '<td>' . format(frequencia($dados, $int, $lmt, 1), $dados) . '%</td>';
         }
 
         // FREQUENCIA RELATIVA ACUMULADA INTERVALAR
         if(empty($ultimafrequencia_ac_int)){
-          echo '<td>' . number_format((frequencia($dados, $init, $limit) * 100)/count($dados), 2, '.', '') . '%</td>';
-          $ultimafrequencia_ac_int = number_format((frequencia($dados, $init, $limit) * 100)/count($dados), 2, '.', '');
+          echo '<td>' . format(frequencia($dados, $init, $limit), $dados) . '%</td>';
+          $ultimafrequencia_ac_int = format(frequencia($dados, $init, $limit), $dados);
         }
         else {
           if(empty($acumulado_rel_int)) {
-            $acumulado_rel_int = number_format((frequencia($dados, $int, $lmt, 1) * 100)/count($dados), 2, '.', '') + $ultimafrequencia_ac_int;
+            $acumulado_rel_int = format(frequencia($dados, $int, $lmt, 1), $dados) + $ultimafrequencia_ac_int;
             echo '<td>' . $acumulado_rel_int . '%</td>';
           } else {
-            $acumulado_rel_int = number_format((frequencia($dados, $int, $lmt, 1) * 100)/count($dados), 2, '.', '') + $acumulado_rel_int;
+            $acumulado_rel_int = format(frequencia($dados, $int, $lmt, 1), $dados) + $acumulado_rel_int;
             echo '<td>' . $acumulado_rel_int . '%</td>';
           }
         }
