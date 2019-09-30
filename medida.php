@@ -14,7 +14,7 @@ Aplicabilidade das medidas:
 */
 
 // BASE DE DADOS
-$json = file_get_contents("exemplo.json");
+$json = file_get_contents("pesquisa.json");
 $dados = json_decode($json, true);
 
 // VARIAVEIS
